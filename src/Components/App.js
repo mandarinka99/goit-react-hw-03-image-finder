@@ -59,8 +59,7 @@ class App extends Component {
   }
 
   loadMore = () => {
-    const nextPage = this.state.page + 1;
-    this.setState({ page: nextPage });
+    this.setState(({ page }) => ({page: page + 1}));
   };
 
   handleSubmit = (query) => {
