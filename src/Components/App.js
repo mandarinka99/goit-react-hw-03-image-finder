@@ -5,10 +5,11 @@ import ImageGallery from "./imageGallery/ImageGallery";
 import Button from "./button/Button";
 import Spiner from "./spiner/Spiner";
 import Container from "./container/Container";
+import API from "../action/API"
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const API_KEY = "22769263-58fdf689ff7727797c0ddae89";
+
 
 class App extends Component {
   state = {
@@ -28,15 +29,8 @@ class App extends Component {
       this.setState({
         isLoading: true,
       });
-      let data;
-      try {
-        const res = await fetch(
-          `https://pixabay.com/api/?q=${this.state.search}&page=${this.state.page}&key=${API_KEY}&image_type=photo&orientation=horizontal&per_page=12`
-        );
-        data = await res.json();
-      } catch (error) {
-        toast.error("Server error");
-      }
+
+      const data = await API.requestImages(this.state.search, this.state.page);
 
       if (this.state.search !== prevState.search) {
         this.setState({

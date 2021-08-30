@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { createPortal } from "react-dom";
 import s from "./Modal.module.css";
+import PropTypes from 'prop-types';
 
 const modalRoot = document.querySelector("#modal-root");
 
@@ -41,6 +42,11 @@ class Modal extends Component {
       modalRoot
     );
   }
+}
+
+Modal.propTypes = {
+  pageURL: PropTypes.string,
+  alt: PropTypes.string,
 }
 
 export default Modal;

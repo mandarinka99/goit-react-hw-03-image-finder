@@ -2,6 +2,7 @@ import { Component } from 'react';
 import s from './ImageGalleryItem.module.css';
 import img from "./images/loading-img.jpg";
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 class ImageGalleryItem extends Component {
   state = { loaded: false };
@@ -11,7 +12,7 @@ class ImageGalleryItem extends Component {
     if (!this.state.loaded) {
         this.setState({ loaded: true });
     }
-} 
+  } 
   render() {
     const {webformatURL, tags} = this.props;
     const classes = classNames({
@@ -26,6 +27,12 @@ class ImageGalleryItem extends Component {
     </li>
     );
   }
+}
+
+ImageGalleryItem.propTypes = {
+  toggleModal: PropTypes.func,
+  webformatURL: PropTypes.string,
+  tags: PropTypes.string,
 }
 
 export default ImageGalleryItem;
